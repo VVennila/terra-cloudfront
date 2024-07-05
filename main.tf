@@ -18,7 +18,7 @@ resource "aws_cloudfront_distribution" "cf_app" {
 
   logging_config {
     include_cookies = false
-    bucket          = "mylogs.s3.amazonaws.com"
+    bucket          = "ven-staticwebsite-files"
     prefix          = "myprefix"
   }
 
