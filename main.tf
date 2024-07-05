@@ -3,12 +3,17 @@ provider "aws" {
 }
 resource "aws_s3_bucket" "static_website" {
   bucket = "ven-staticwebsite-files" 
+
+  tags = {
+    Name = "My bucket"
+  }
 }
 
 resource "aws_cloudfront_distribution" "cf_app" {
   origin {
     domain_name = "ven-staticwebsite-files.s3.ap-southeast-1.amazonaws.com"
     origin_id   = "ven-staticwebsite-files"
+
   }
 
   enabled             = true
