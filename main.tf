@@ -2,13 +2,13 @@ provider "aws" {
   region = "ap-southeast-1"
 }
 resource "aws_s3_bucket" "static_website" {
-  bucket = "sctp-staticwebsite-files" 
+  bucket = "ven-staticwebsite-files" 
 }
 
 resource "aws_cloudfront_distribution" "cf_app" {
   origin {
-    domain_name = "sctp-staticwebsite-files.s3.ap-southeast-1.amazonaws.com"
-    origin_id   = "sctp-staticwebsite-files"
+    domain_name = "ven-staticwebsite-files.s3.ap-southeast-1.amazonaws.com"
+    origin_id   = "ven-staticwebsite-files"
   }
 
   enabled             = true
@@ -28,7 +28,7 @@ resource "aws_cloudfront_distribution" "cf_app" {
     compress         = true
     allowed_methods  = ["GET", "HEAD"]
     cached_methods   = ["GET", "HEAD"]
-    target_origin_id = "sctp-staticwebsite-files"
+    target_origin_id = "ven-staticwebsite-files"
 
     forwarded_values {
       query_string = false
@@ -48,7 +48,7 @@ resource "aws_cloudfront_distribution" "cf_app" {
     path_pattern     = "/default*"
     allowed_methods  = ["GET", "HEAD"]
     cached_methods   = ["GET", "HEAD"]
-    target_origin_id = "sctp-staticwebsite-files"
+    target_origin_id = "ven-staticwebsite-files"
 
     forwarded_values {
       query_string = false
