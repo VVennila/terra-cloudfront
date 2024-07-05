@@ -3,10 +3,6 @@ provider "aws" {
 }
 resource "aws_s3_bucket" "static_website" {
   bucket = "ven-staticwebsite-files" 
-
-  tags = {
-    Name = "My bucket"
-  }
 }
 
 resource "aws_cloudfront_distribution" "cf_app" {
@@ -20,12 +16,6 @@ resource "aws_cloudfront_distribution" "cf_app" {
   is_ipv6_enabled     = true
   comment             = "CloudFront Distribution"
   default_root_object = "home.html"
-
-  logging_config {
-    include_cookies = false
-    bucket          = "ven-staticwebsite-files"
-    prefix          = "myprefix"
-  }
 
   aliases = ["mysite.example.com", "yoursite.example.com"]
 
