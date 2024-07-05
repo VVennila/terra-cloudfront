@@ -17,6 +17,12 @@ resource "aws_cloudfront_distribution" "cf_app" {
   comment             = "CloudFront Distribution"
   default_root_object = "home.html"
 
+  logging_config {
+    include_cookies = false
+    bucket          = "ven-staticwebsite-files"
+    prefix          = "myprefix"
+  }
+  
   aliases = ["mysite.example.com", "yoursite.example.com"]
 
   default_cache_behavior {
